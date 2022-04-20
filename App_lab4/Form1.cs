@@ -65,7 +65,7 @@ namespace App_lab4
                 return;
             }
             button1.Enabled = false;
-            textBox1.Enabled = false;
+            textBox2.Enabled = false;
             listView1.Items.Clear();
             imageList1.Images.Clear();
 
@@ -130,10 +130,10 @@ namespace App_lab4
                 }
             }
             listView1.Invalidate();
+            bool run = true;
+            int count = 0;
             var tr = new Thread(delegate ()
             {
-                bool run = true;
-                int count = 0;
                 while (run)
                 {
 
@@ -229,10 +229,10 @@ namespace App_lab4
                 res.Save(path.Substring(0, path.Length - 4) + "_new.jpg");
                 Invoke((MethodInvoker)delegate
                 {
-                    textBox4.Text = "...";
+                    textBox4.Text = count.ToString();
                     pictureBox2.Image = res;
                     button1.Enabled = true;
-                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
                 });
             });
             tr.Start();
