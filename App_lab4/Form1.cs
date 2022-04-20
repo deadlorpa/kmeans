@@ -59,9 +59,16 @@ namespace App_lab4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(img == null)
+            {
+                MessageBox.Show("А можно картинку?");
+                return;
+            }
             button1.Enabled = false;
+            textBox1.Enabled = false;
             listView1.Items.Clear();
             imageList1.Images.Clear();
+
             int k = Int32.Parse(textBox1.Text);
             iterCount = Int32.Parse(textBox3.Text);
             iterPeriod = Int32.Parse(textBox5.Text);
@@ -225,6 +232,7 @@ namespace App_lab4
                     textBox4.Text = "...";
                     pictureBox2.Image = res;
                     button1.Enabled = true;
+                    textBox1.Enabled = true;
                 });
             });
             tr.Start();
@@ -237,10 +245,16 @@ namespace App_lab4
             if (chooseFile.ShowDialog() == DialogResult.Cancel)
                 return;
             path = chooseFile.FileName;
-
-            img = Image.FromFile(path);
-            pictureBox1.Image = img;
-            textBox2.Text = path;
+            try
+            {
+                img = Image.FromFile(path);
+                pictureBox1.Image = img;
+                textBox2.Text = path;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Меня где-то обманули");
+            }
         }
     }
 }
