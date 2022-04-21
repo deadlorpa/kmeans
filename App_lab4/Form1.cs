@@ -78,7 +78,9 @@ namespace App_lab4
                 textBox2.Enabled = false;
                 listView1.Items.Clear();
                 imageList1.Images.Clear();
-
+                listView2.Items.Clear();
+                imageList2.Images.Clear();
+                pictureBox2.Image = null;
                 int k = Int32.Parse(textBox1.Text);
                 iterCount = Int32.Parse(textBox3.Text);
                 iterPeriod = Int32.Parse(textBox5.Text);
@@ -215,7 +217,6 @@ namespace App_lab4
 
                                             }
                                             Image rest = result;
-                                            rest.Save(path.Substring(0, path.Length - 4) + "_new.jpg");
 
                                             pictureBox2.Image = rest;
 
@@ -228,7 +229,7 @@ namespace App_lab4
                         }
 
                     }
-
+                    
                     var trr1 = new Thread(delegate ()
                     {
                         Invoke((MethodInvoker)delegate
@@ -265,7 +266,6 @@ namespace App_lab4
 
                                 }
                                 Image rest = result;
-                                rest.Save(path.Substring(0, path.Length - 4) + "_new.jpg");
 
                                 pictureBox2.Image = rest;
 
